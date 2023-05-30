@@ -1,1 +1,8 @@
-<p>item-card works!</p>
+<div *ngIf="itemInfo !== null; then defaultItem else cartItem"></div>
+<ng-template #defaultItem>
+  default item
+</ng-template>
+
+<ng-template #cartItem>
+  shop cart item
+</ng-template>
