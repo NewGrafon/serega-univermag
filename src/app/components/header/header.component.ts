@@ -7,4 +7,24 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  menuBlock: any
+  closemenu: any
+
+  openmenu() {
+    this.menuBlock = document.getElementById("menu_block")
+    this.menuBlock?.classList.remove("menu_block")
+    this.menuBlock?.classList.add("menu_block_active")
+
+  }
+
+
+
+  closeMenu() {
+    this.closemenu = document.getElementById("closemenu")
+    this.menuBlock?.classList.remove("menu_block_active")
+    this.menuBlock?.classList.add("menu_block")
+
+  }
+
+
 }

@@ -1,0 +1,140 @@
+header {
+    position: absolute;
+    top: 20px;
+    left: 5%;
+    width: 90%;
+    height: 90px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba($color: #1d1d1d, $alpha: 0.4);
+    background-color: rgba($color: #000000, $alpha: 0.2);
+}
+
+
+.conteiner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 88%;
+}
+
+.menu {
+    width: 50px;
+    height: 50px;
+    border-radius: 3434px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.menu:hover {
+    background-color: #fff;
+}
+
+.prikol div {
+    margin: 3px;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    transition: 0.1s;
+}
+
+.menu:hover .prikol div {
+background-color: orange;
+}
+
+.menu_block{
+    position: absolute;
+    height: 100vh;
+    width: 480px;
+    z-index: 10;
+    background-color: #000000;
+    opacity: 0.95;
+    right: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform: translate(480px);
+    transition: 0.2s;
+    visibility: hidden;
+}
+
+.menu_block_active{
+    position: fixed;
+    height: 100vh;
+    width: 480px;
+    z-index: 10;
+    background-color: #000000;
+    opacity: 0.95;
+    right: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.close{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 20px;
+    top: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.menu_name{
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.menu_pages{
+    margin-top: 40px;
+    font-size: 24px;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    p{
+    cursor: pointer;
+    }
+
+}
+
+.menu_pages p:hover{
+    text-decoration: underline; 
+}
+
+
+// меню
+
+.search{
+    padding: 0 10px 0 10px;
+    border-radius: 12px;
+    width: 28%;
+    height: 36px;
+    background-color: initial;
+    outline: 2px solid rgba($color: #ffffff, $alpha: 0.1);
+    border: none;
+    
+    color: white;
+    font-size: 18px;
+}
+
+.search:focus{
+outline: 2px solid orange;
+}

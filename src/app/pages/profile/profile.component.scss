@@ -1,0 +1,118 @@
+.conteiner {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*левый блок*/
+.main_block {
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main_info {
+    background-color: #fff;
+    border-radius: 20px;
+    width: 24%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user_info {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+
+}
+
+.right {
+    text-align: end;
+}
+
+
+.profile_name {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: #721515;
+        border-radius: 34434px;
+        margin-top: 12px;
+        margin-bottom: 6px;
+    }
+
+    p {
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+/*правый блок*/
+
+.order_info {
+    background-color: #fff;
+    border-radius: 20px;
+    width: 74%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orders {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 6px;
+}
+
+.title{
+    margin-top: 4px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.sub_title{
+    font-size: 20px;
+}
+
+.past,
+.active{
+    width: 50%;
+    text-align: center;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.item{
+width: 90%;
+min-height: 34px;
+margin-top: 4px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+border-radius: 8px;
+border: 1px solid #bebebe;
+
+    p{
+        margin: 0 20px 0 20px;
+        font-size: 18px;
+    }
+}
