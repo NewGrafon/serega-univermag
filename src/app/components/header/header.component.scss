@@ -12,6 +12,84 @@ header {
     background-color: rgba($color: #000000, $alpha: 0.2);
 }
 
+.logo{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 22px;
+    color: orange;
+    cursor: pointer;
+
+    span{
+    font-weight: 100;
+    color: #ffffff;
+    
+    }
+}
+
+.sub_header{
+    width: 100vw;
+    height: 90px;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba($color: #1d1d1d, $alpha: 0.4);
+
+    .conteiner {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+    }
+
+    .prikol div {
+        margin: 3px;
+        width: 20px;
+        height: 2px;
+        background-color: orange;
+        transition: 0.1s;
+    }
+
+    .menu:hover {
+        background-color: #d6d6d6;
+    }
+
+    .search{
+        padding: 0 10px 0 10px;
+        border-radius: 12px;
+        width: 28%;
+        height: 36px;
+        background-color: initial;
+        outline: 2px solid rgba($color: #535353, $alpha: 0.3);
+        border: none;
+        
+        color: white;
+        font-size: 18px;
+    }
+    
+    .search:focus{
+    outline: 2px solid orange;
+    }
+
+    .logo{
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 22px;
+        color: orange;
+        cursor: pointer;
+    
+        span{
+        font-weight: 100;
+        color: #000000;
+        
+        }
+    }
+}
+
 
 .conteiner {
     position: relative;
@@ -20,6 +98,11 @@ header {
     justify-content: space-between;
     width: 88%;
 }
+
+
+
+
+// меню
 
 .menu {
     width: 50px;
@@ -120,7 +203,7 @@ background-color: orange;
 }
 
 
-// меню
+// search
 
 .search{
     padding: 0 10px 0 10px;
@@ -138,3 +221,4 @@ background-color: orange;
 .search:focus{
 outline: 2px solid orange;
 }
+
