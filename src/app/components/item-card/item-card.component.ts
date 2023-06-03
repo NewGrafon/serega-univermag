@@ -24,8 +24,12 @@ export class ItemCardComponent {
     if (this.itemInfoForCart?.count === 1) {
       this.removeItemFromCart();
     } else {
-      // @ts-ignore
-      this.itemInfoForCart?.count--;
+      try {
+        // @ts-ignore
+        this.itemInfoForCart.count--;
+      } catch (e) {
+        console.error(e)
+      }
     }
   }
 
