@@ -1,45 +1,47 @@
-<header>
-    <!-- <% try { %> -->
-        <!-- <% if (page==='/' ) { %> -->
-            <div class="conteiner">
-                <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
-                <input class="search" placeholder="Поиск товара">
-                <div class="menu" id="menu" (click)="openmenu()">
-                    <div class="prikol">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-            <!-- <% } %> -->
-                <!-- <% } %> -->
-            
+<header *ngIf="currentRoute === '/'; then indexHeader else otherHeader">
 </header>
-
-<!-- <div class="sub_header">
+<ng-template #indexHeader>
+  <div class="index_header">
     <div class="conteiner">
-        <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
-        <input class="search" placeholder="Поиск товара">
-        <div class="menu" id="menu" (click)="openmenu()">
-            <div class="prikol">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+      <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
+      <input class="search" placeholder="Поиск товара">
+      <div class="menu" id="menu" (click)="openMenu()">
+        <div class="prikol">
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
+      </div>
     </div>
-</div> -->
+  </div>
+</ng-template>
+
+<ng-template #otherHeader>
+  <div class="sub_header">
+    <div class="conteiner">
+      <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
+      <input class="search" placeholder="Поиск товара">
+      <div class="menu" id="menu" (click)="openMenu()">
+        <div class="prikol">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
 
 <div class="menu_block" id="menu_block">
-    <p class="menu_name">Меню</p>
-    <div class="close" id="closemenu" (click)="closeMenu()">X</div>
-    <div class="menu_pages">
-        <p routerLink="/" (click)="closeMenu()">Главная</p>
-        <p routerLink="/profile" (click)="closeMenu()">Профиль</p>
-        <!-- <p routerLink="/login">Авторизация</p> тута проверка на логин не логин пон? -->
-        <p routerLink="/" (click)="closeMenu()">Каталог</p>
-        <p routerLink="/shopping-cart" (click)="closeMenu()">Корзина</p>
-        <p>Выйти</p>
-    </div>
+  <p class="menu_name">Меню</p>
+  <div class="close" id="close_menu" (click)="closeMenu()">X</div>
+  <div class="menu_pages">
+    <p routerLink="/" (click)="closeMenu()">Главная</p>
+    <p routerLink="/profile" (click)="closeMenu()">Профиль</p>
+    <!-- <p routerLink="/login" (click)="closeMenu()">Авторизация</p> тута проверка на логин не логин пон? -->
+    <p routerLink="/" (click)="closeMenu()">Каталог</p>
+    <p routerLink="/shopping-cart" (click)="closeMenu()">Корзина</p>
+    <p>Выйти</p>
+  </div>
 </div>

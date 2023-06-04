@@ -9,7 +9,10 @@ import {GetFakeDB, IItemInfo} from "../../fake-items-database";
 })
 export class ShoppingCartComponent implements OnInit {
 
-  static itemsInCart: ICartItem[] = [];
+  public static itemsInCart: ICartItem[] = [];
+  get staticItemsInCart(): ICartItem[] {
+    return ShoppingCartComponent.itemsInCart;
+  }
 
   static RecalculateCart(changeObj: ChangeInCart | undefined): void {
 

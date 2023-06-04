@@ -1,4 +1,4 @@
-header {
+.index_header {
     position: absolute;
     top: 20px;
     left: 5%;
@@ -23,7 +23,7 @@ header {
     span{
     font-weight: 100;
     color: #ffffff;
-    
+
     }
 }
 
@@ -65,11 +65,11 @@ header {
         background-color: initial;
         outline: 2px solid rgba($color: #535353, $alpha: 0.3);
         border: none;
-        
+
         color: white;
         font-size: 18px;
     }
-    
+
     .search:focus{
     outline: 2px solid orange;
     }
@@ -81,11 +81,11 @@ header {
         line-height: 22px;
         color: orange;
         cursor: pointer;
-    
+
         span{
         font-weight: 100;
         color: #000000;
-        
+
         }
     }
 }
@@ -191,7 +191,7 @@ background-color: orange;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
+
     p{
     cursor: pointer;
     }
@@ -199,7 +199,7 @@ background-color: orange;
 }
 
 .menu_pages p:hover{
-    text-decoration: underline; 
+    text-decoration: underline;
 }
 
 
@@ -213,7 +213,7 @@ background-color: orange;
     background-color: initial;
     outline: 2px solid rgba($color: #ffffff, $alpha: 0.1);
     border: none;
-    
+
     color: white;
     font-size: 18px;
 }
