@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import {Router, Event, NavigationStart, NavigationEnd, NavigationError} from '@angular/router';
 import {AppComponent} from "../../app.component";
+import { OnInit } from "@angular/core";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  currentRoute: string;
+  currentRoute: string = '/';
 
   menuBlock: any
   closeMenuBlock: any
@@ -26,22 +27,19 @@ export class HeaderComponent {
     this.menuBlock?.classList.add("menu_block")
   }
 
-  constructor(private router: Router) {
-    this.currentRoute = "/";
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
+  ngOnInit() {
+    this.currentRoute = location.pathname;
+  }
 
-      }
+  constructor(private router: Router) {
+    router.events.subscribe((event: Event) => {
 
       if (event instanceof NavigationEnd) {
-        AppComponent.WaitForUpdateUser(async () => {
-          this.currentRoute = event.url;
+        AppComponent.WaitForUpdateUser((url: string) => {
+          this.currentRoute = url;
         });
       }
 
-      if (event instanceof NavigationError) {
-        console.log(event.error);
-      }
     });
   }
 }
