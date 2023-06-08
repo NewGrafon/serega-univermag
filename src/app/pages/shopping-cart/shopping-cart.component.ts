@@ -100,6 +100,14 @@ export class ShoppingCartComponent implements OnInit {
       ShoppingCartComponent.currentInstance.itemsInCart = ShoppingCartComponent.itemsInCart;
     }
   }
+
+  getCartPrice(): number {
+    let result = 0;
+    this.itemsInCart.forEach(item => {
+      result += item.info.price * item.count;
+    })
+    return result;
+  }
 }
 
 export enum ChangeInCartType {

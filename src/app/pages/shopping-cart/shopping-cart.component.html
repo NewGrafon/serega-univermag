@@ -14,13 +14,13 @@
         <div class="info">
 
           <div class="name">
-            <p>Товаров(1)</p>
-            <p>Скидка</p>
+            <p>Товаров({{ itemsInCart.length }})</p>
+<!--            <p>Скидка</p>-->
           </div>
 
           <div class="stats">
-            <p style="font-weight: bold;">34p</p>
-            <p style="color:red;">-16p</p>
+            <p style="font-weight: bold;">{{ getCartPrice() }} ₽</p>
+<!--            <p style="color:red;">-16p</p>-->
           </div>
 
         </div>

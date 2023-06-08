@@ -24,34 +24,27 @@ const fakeDB: IItemInfo[] = [
   },
   {
     id: '1',
-    category: Categories.Остальное,
-    name: 'Деревянный пенис',
-    description: 'ыыы',
-    imageName: null,
-    price: 1200
+    category: Categories.Продукты_питания,
+    name: 'Лапша "Доширак" Сытный обед с курицей 110гр',
+    description: '',
+    imageName: 'doshirak_another.jpg',
+    price: 90
   },
   {
-    id: '0',
-    category: Categories.Остальное,
-    name: '',
+    id: '2',
+    category: Categories.Продукты_питания,
+    name: 'Светлое пиво Жигули Барное',
     description: '',
-    imageName: '',
-    price: 0
+    imageName: 'Zhiguli.webp',
+    price: 120
   },
   {
-    id: '0',
+    id: '3',
     category: Categories.Остальное,
-    name: '',
+    name: 'Стол "Река"',
     description: '',
-    imageName: '',
-    price: 0
-  }, {
-    id: '0',
-    category: Categories.Остальное,
-    name: '',
-    description: '',
-    imageName: '',
-    price: 0
+    imageName: 'Stol_reka.jpg',
+    price: 3000
   },
   {
     id: '0',
