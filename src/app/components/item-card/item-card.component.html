@@ -4,7 +4,7 @@
     <img [src]="itemInfo?.imageName ? './assets/img/'+itemInfo?.imageName : './assets/img/no-photo.png'">
     <div>
       <p class="name">{{ itemInfo?.name }}</p>
-      <!--      <p class="discount_time">С 17 мая до 23 апреля</p>-->
+      <p class="discount_time">Цена: {{ itemInfo?.price }} ₽</p>
     </div>
     <div class="interacts">
       <ng-container *ngIf="existInCart">
@@ -27,7 +27,7 @@
     <img [src]="itemInfo?.imageName ? './assets/img/'+itemInfo?.imageName : './assets/img/no-photo.png'">
     <div>
       <p class="name">{{ itemInfo?.name }}</p>
-      <!--      <p class="discount_time">С 17 мая до 23 апреля</p>-->
+      <p class="discount_time">Цена: {{ itemInfo?.price }} ₽</p>
     </div>
     <div class="interacts">
       <ng-container *ngIf="existInCart">

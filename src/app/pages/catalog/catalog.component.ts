@@ -10,8 +10,8 @@ import {ICartItem, ShoppingCartComponent} from "../shopping-cart/shopping-cart.c
 export class CatalogComponent implements OnInit {
 
   @Input('ngModel') selectedCategory: Categories = Categories.Всё;
-  // @Input('ngModel') minPrice: number | null = null;
-  // @Input('ngModel') maxPrice: number | null = null;
+  @Input() minPrice: number | null = null;
+  @Input() maxPrice: number | null = null;
 
   itemsDB: IItemInfo[] = GetFakeDB();
 
@@ -25,9 +25,22 @@ export class CatalogComponent implements OnInit {
     return true;
   }
 
-  // priceInBound(): boolean {
-  //
-  // }
+  correctPriceBounds(min: any, max: any): void {
+    if (max.value !== "" && Number(min.value) > Number(max.value))
+    {
+      min.value = max.value;
+    }
+
+    this.minPrice = min.value !== "" ? Number(min.value) : null;
+    this.maxPrice = max.value !== "" ? Number(max.value) : null;
+  }
+
+  priceInBound(itemPrice: number): boolean {
+    const min = this.minPrice ?? Number.MIN_VALUE;
+    const max = this.maxPrice ?? Number.MAX_VALUE;
+
+    return min <= itemPrice && itemPrice <= max;
+  }
   ngOnInit() {
 
   }

@@ -11,10 +11,13 @@ export class ShoppingCartComponent implements OnInit {
 
   public static itemsInCart: ICartItem[] = [];
   itemsInCart: ICartItem[] = [];
+  static currentInstance: ShoppingCartComponent;
 
+  constructor() {
+    ShoppingCartComponent.currentInstance = this;
+  }
   ngOnInit() {
     ShoppingCartComponent.RecalculateCart(undefined);
-    this.itemsInCart = [];
     this.itemsInCart = ShoppingCartComponent.itemsInCart;
   }
 
@@ -91,9 +94,11 @@ export class ShoppingCartComponent implements OnInit {
           return;
         }
       });
-
     }
 
+    if (ShoppingCartComponent.currentInstance) {
+      ShoppingCartComponent.currentInstance.itemsInCart = ShoppingCartComponent.itemsInCart;
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IItemInfo} from "../../fake-items-database";
 import {ChangeInCartType, ShoppingCartComponent} from "../../pages/shopping-cart/shopping-cart.component";
 
@@ -23,7 +23,6 @@ export class ItemCardComponent implements OnInit {
     this.countInCart = 0;
 
     ShoppingCartComponent.itemsInCart.forEach(item => {
-      console.log(item)
       if (this.itemInfo?.id === item.info.id) {
         this.existInCart = true;
         this.countInCart = item.count;

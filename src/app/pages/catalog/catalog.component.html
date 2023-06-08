@@ -5,8 +5,8 @@
             <div>
                 <p>Цена</p>
                 <div class="inputs">
-                    <input type="number" placeholder="Мин. цена" min="0">
-                    <input type="number" placeholder="Макс. цена">
+                    <input type="number" placeholder="Мин. цена" min="0" #minPrice (input)="correctPriceBounds(minPrice, maxPrice)">
+                    <input type="number" placeholder="Макс. цена" #maxPrice (input)="correctPriceBounds(minPrice, maxPrice)">
                 </div>
             </div>
             <div>
@@ -24,10 +24,12 @@
             <ng-container *ngIf="item.category === selectedCategory || selectedCategory === Categories['Всё']">
               <ng-container *ngIf="updateIDsInCart()">
 
+                <ng-container *ngIf="priceInBound(item.price)">
                   <app-item-card
                     [itemInfo]="item"
                     [existInCart]="itemsIDsInCart.includes(item.id)"
                   ></app-item-card>
+                </ng-container>
 
               </ng-container>
             </ng-container>
