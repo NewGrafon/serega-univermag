@@ -1,3 +1,5 @@
+// main header
+
 .index_header {
     position: absolute;
     top: 20px;
@@ -12,7 +14,7 @@
     background-color: rgba($color: #000000, $alpha: 0.2);
 }
 
-.logo{
+.logo {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
@@ -20,14 +22,16 @@
     color: orange;
     cursor: pointer;
 
-    span{
-    font-weight: 100;
-    color: #ffffff;
+    span {
+        font-weight: 100;
+        color: #ffffff;
 
     }
 }
 
-.sub_header{
+// second header
+
+.sub_header {
     width: 100vw;
     height: 90px;
     background-color: #fff;
@@ -57,7 +61,7 @@
         background-color: #d6d6d6;
     }
 
-    .search{
+    .search {
         padding: 0 10px 0 10px;
         border-radius: 12px;
         width: 28%;
@@ -70,11 +74,11 @@
         font-size: 18px;
     }
 
-    .search:focus{
-    outline: 2px solid orange;
+    .search:focus {
+        outline: 2px solid orange;
     }
 
-    .logo{
+    .logo {
         text-align: center;
         font-size: 24px;
         font-weight: bold;
@@ -82,9 +86,9 @@
         color: orange;
         cursor: pointer;
 
-        span{
-        font-weight: 100;
-        color: #000000;
+        span {
+            font-weight: 100;
+            color: #000000;
 
         }
     }
@@ -129,10 +133,10 @@
 }
 
 .menu:hover .prikol div {
-background-color: orange;
+    background-color: orange;
 }
 
-.menu_block{
+.menu_block {
     position: absolute;
     height: 100vh;
     width: 480px;
@@ -148,10 +152,9 @@ background-color: orange;
     transform: translate(480px);
     transition: 0.2s;
     visibility: hidden;
-    
 }
 
-.menu_block_active{
+.menu_block_active {
     position: fixed;
     height: 100vh;
     width: 480px;
@@ -167,7 +170,7 @@ background-color: orange;
     transition: 0.2s;
 }
 
-.close{
+.close {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -179,13 +182,13 @@ background-color: orange;
     text-align: center;
 }
 
-.menu_name{
+.menu_name {
     font-size: 40px;
     font-weight: bold;
     margin-top: 30px;
 }
 
-.menu_pages{
+.menu_pages {
     margin-top: 40px;
     font-size: 24px;
     height: 360px;
@@ -193,20 +196,20 @@ background-color: orange;
     flex-direction: column;
     justify-content: space-around;
 
-    p{
-    cursor: pointer;
+    p {
+        cursor: pointer;
     }
 
 }
 
-.menu_pages p:hover{
+.menu_pages p:hover {
     text-decoration: underline;
 }
 
 
 // search
 
-.search{
+.search {
     padding: 0 10px 0 10px;
     border-radius: 12px;
     width: 28%;
@@ -219,7 +222,6 @@ background-color: orange;
     font-size: 18px;
 }
 
-.search:focus{
-outline: 2px solid orange;
+.search:focus {
+    outline: 2px solid orange;
 }
-
