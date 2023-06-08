@@ -1,4 +1,4 @@
-.fake_header{
+.fake_header {
     width: 100%;
     height: 90px;
     position: relative;
@@ -33,29 +33,29 @@
     flex-direction: column;
     align-items: center;
 
-    p{
+    p {
         margin-top: 10px;
     }
 }
 
-.price{
+.price {
     width: 90%;
 }
 
 .info {
-    display: flex;    
+    display: flex;
 }
 
-.stats{
+.stats {
     text-align: end;
     width: 50%;
 }
 
-.name{
-width: 50%;
+.name {
+    width: 50%;
 }
 
-.title{
+.title {
     font-size: 20px;
     font-weight: bold;
 }
@@ -86,15 +86,123 @@ width: 50%;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
-    
+
 
 }
 
 
-.item{
+.item {
+    position: relative;
     width: 90%;
     height: 100px;
     border: 1px solid #d3d3d3;
     border-radius: 20px;
     margin-top: 14px;
+    display: flex;
+
 }
+
+.img {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    top: calc(50% - 45px);
+
+
+    img {
+        height: 100%;
+    }
+
+
+
+}
+
+.item_title {
+    position: relative;
+    font-size: 20px;
+    width: 80%;
+    max-height: 74px;
+    margin-left: 20px;
+    word-break: break-all;
+    overflow: hidden;
+    top: 10px;
+}
+
+.prices {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.main_price {
+    font-size: 20px;
+    color: #8d8d8d;
+}
+
+.discount {
+    font-weight: bold;
+
+}
+
+.count {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    font-size: 20px;
+    position: absolute;
+    bottom: 5px;
+    background-color: #dfdfdf;
+    border-radius: 4px;
+    align-items: center;
+    height: 30px;
+}
+
+.hover {
+    width: 90%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px 0 8px;
+    cursor: pointer;
+}
+
+.hover:hover {
+    background-color: orange;
+    border-radius: 4px;
+}
+
+.number{
+    padding: 0 4px 0 4px;
+
+    input{
+        width: 24px;
+        outline: none;
+        border: none;
+        height: 30px;
+        background-color: #dfdfdf;
+        text-align: center;
+    }
+}
+
+.delete{
+    position: absolute;
+    left: 126px;
+    bottom: 5px;
+    font-size: 14px;
+    transition: 0.1s;
+    cursor: pointer;
+    background-color: initial;
+    border: none;
+}
+
+.delete:hover{
+        color: red;
+    }
