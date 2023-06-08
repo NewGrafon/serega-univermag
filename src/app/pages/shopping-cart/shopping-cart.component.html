@@ -1,3 +1,42 @@
+<div class="fake_header"></div>
+
 <div *ngFor="let item of staticItemsInCart;">
   <app-item-card [itemInfoForCart]="item"></app-item-card>
+</div>
+
+
+<div class="main_block">
+  <div class="container">
+    <div class="catalog">
+      <div class="item">
+        <img>
+        <p></p>
+        <div>
+          <p></p>
+          <p></p>
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="price">
+        <p class="title">Ваша корзина</p>
+        <div class="info">
+
+          <div class="name">
+            <p>Товаров(1)</p>
+            <p>Скидка</p>
+          </div>
+
+          <div class="stats">
+            <p style="font-weight: bold;">34p</p>
+            <p style="color:red;">-16p</p>
+          </div>
+
+        </div>
+      </div>
+      <button class="acepts">Оплатить</button>
+    </div>
+  </div>
 </div>
