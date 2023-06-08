@@ -12,6 +12,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import {FormsModule} from "@angular/forms";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]

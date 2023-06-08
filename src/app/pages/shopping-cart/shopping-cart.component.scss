@@ -1,10 +1,3 @@
-.fake_header{
-    width: 100%;
-    height: 90px;
-    position: relative;
-    z-index: -20;
-}
-
 .main_block {
     position: absolute;
     width: 100%;
@@ -43,7 +36,7 @@
 }
 
 .info {
-    display: flex;    
+    display: flex;
 }
 
 .stats{
@@ -86,7 +79,7 @@ width: 50%;
     flex-direction: column;
     align-items: center;
     background-color: #fff;
-    
+
 
 }
 

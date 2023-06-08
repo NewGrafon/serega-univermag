@@ -1,8 +1,41 @@
-<div *ngIf="itemInfo !== null; then defaultItem else cartItem"></div>
+<div *ngIf="!isShoppingCart; then defaultItem else cartItem"></div>
 <ng-template #defaultItem>
-  default item
+  <div class="item">
+    <img [src]="itemInfo?.imageName ? './assets/img/'+itemInfo?.imageName : './assets/img/no-photo.png'">
+    <div>
+      <p class="name">{{ itemInfo?.name }}</p>
+      <!--      <p class="discount_time">С 17 мая до 23 апреля</p>-->
+    </div>
+    <div class="interacts">
+      <ng-container *ngIf="existInCart">
+        <button (click)="removeItemFromCart()"><p>удолит</p></button>
+        <button (click)="decrementItemCount()"><p>-</p></button>
+        <p>{{ countInCart }}</p>
+        <button (click)="incrementItemCount()"><p>+</p></button>
+      </ng-container>
+      <ng-container *ngIf="!existInCart">
+        <button (click)="addToCart()">
+          <p>Добавить в корзину</p>
+        </button>
+      </ng-container>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #cartItem>
-  shop cart item
+  <div class="item">
+    <img [src]="itemInfo?.imageName ? './assets/img/'+itemInfo?.imageName : './assets/img/no-photo.png'">
+    <div>
+      <p class="name">{{ itemInfo?.name }}</p>
+      <!--      <p class="discount_time">С 17 мая до 23 апреля</p>-->
+    </div>
+    <div class="interacts">
+      <ng-container *ngIf="existInCart">
+        <button (click)="removeItemFromCart()"><p>удолит</p></button>
+        <button (click)="decrementItemCount()"><p>-</p></button>
+        <p>{{ countInCart }}</p>
+        <button (click)="incrementItemCount()"><p>+</p></button>
+      </ng-container>
+    </div>
+  </div>
 </ng-template>

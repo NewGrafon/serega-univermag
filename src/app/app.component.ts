@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Event, NavigationEnd, NavigationError, NavigationStart, Router} from "@angular/router";
+import {ShoppingCartComponent} from "./pages/shopping-cart/shopping-cart.component";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,10 @@ export class AppComponent {
     AppComponent.cbAfterUpdateUser.push(cb);
   }
   public static navigationEventFinished: boolean = false;
+
   constructor(private router: Router) {
+
+    ShoppingCartComponent.RecalculateCart(undefined);
 
     router.events.subscribe(async (event: Event) => {
 

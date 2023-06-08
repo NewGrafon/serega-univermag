@@ -1,5 +1,7 @@
 export enum Categories {
-  Other
+  Всё = 'Всё',
+  Продукты_питания = 'Продукты питания',
+  Остальное = 'Остальное'
 }
 
 export interface IItemInfo {
@@ -14,15 +16,23 @@ export interface IItemInfo {
 const fakeDB: IItemInfo[] = [
   {
     id: '0',
-    category: Categories.Other,
-    name: '0',
-    description: '0',
+    category: Categories.Продукты_питания,
+    name: 'Лапша ДОШИРАК куриная по-домашнему, 80г',
+    description: 'ням ням!',
+    imageName: 'doshirak.png',
+    price: 60
+  },
+  {
+    id: '1',
+    category: Categories.Остальное,
+    name: 'Деревянный пенис',
+    description: 'ыыы',
     imageName: null,
-    price: 0
+    price: 1200
   },
   {
     id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',
@@ -30,22 +40,14 @@ const fakeDB: IItemInfo[] = [
   },
   {
     id: '0',
-    category: Categories.Other,
-    name: '',
-    description: '',
-    imageName: '',
-    price: 0
-  },
-  {
-    id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',
     price: 0
   }, {
     id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',
@@ -53,7 +55,7 @@ const fakeDB: IItemInfo[] = [
   },
   {
     id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',
@@ -61,7 +63,7 @@ const fakeDB: IItemInfo[] = [
   },
   {
     id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',
@@ -69,7 +71,7 @@ const fakeDB: IItemInfo[] = [
   },
   {
     id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',
@@ -77,7 +79,7 @@ const fakeDB: IItemInfo[] = [
   },
   {
     id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',
@@ -85,7 +87,7 @@ const fakeDB: IItemInfo[] = [
   },
   {
     id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',
@@ -93,7 +95,7 @@ const fakeDB: IItemInfo[] = [
   },
   {
     id: '0',
-    category: Categories.Other,
+    category: Categories.Остальное,
     name: '',
     description: '',
     imageName: '',

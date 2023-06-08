@@ -10,8 +10,12 @@ import {GetFakeDB, IItemInfo} from "../../fake-items-database";
 export class ShoppingCartComponent implements OnInit {
 
   public static itemsInCart: ICartItem[] = [];
-  get staticItemsInCart(): ICartItem[] {
-    return ShoppingCartComponent.itemsInCart;
+  itemsInCart: ICartItem[] = [];
+
+  ngOnInit() {
+    ShoppingCartComponent.RecalculateCart(undefined);
+    this.itemsInCart = [];
+    this.itemsInCart = ShoppingCartComponent.itemsInCart;
   }
 
   static RecalculateCart(changeObj: ChangeInCart | undefined): void {
@@ -23,12 +27,12 @@ export class ShoppingCartComponent implements OnInit {
 
     if (changeObj !== undefined) {
 
-      if (changeObj.type === ChangeInCartType.Add && changeObj.value !== undefined
+      if (changeObj.type === ChangeInCartType.Add
         && lsJson.filter(item => item.id === changeObj.id).length === 0) {
 
         lsJson.push({
           id: changeObj.id,
-          count: changeObj.value
+          count: 1
         });
 
       } else {
@@ -79,20 +83,17 @@ export class ShoppingCartComponent implements OnInit {
     for (let item of lsJson) {
       fakeDB.forEach(fdbItem => {
         if (item.id === fdbItem.id) {
-          this.itemsInCart.push({
+          const obj: ICartItem = {
             info: fdbItem,
             count: item.count
-          });
+          }
+          ShoppingCartComponent.itemsInCart.push(obj);
           return;
         }
       });
 
     }
 
-  }
-
-  ngOnInit() {
-    ShoppingCartComponent.RecalculateCart(undefined);
   }
 }
 

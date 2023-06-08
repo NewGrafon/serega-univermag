@@ -1,22 +1,10 @@
-<div class="fake_header"></div>
-
-<div *ngFor="let item of staticItemsInCart;">
-  <app-item-card [itemInfoForCart]="item"></app-item-card>
-</div>
-
-
 <div class="main_block">
   <div class="container">
     <div class="catalog">
-      <div class="item">
-        <img>
-        <p></p>
-        <div>
-          <p></p>
-          <p></p>
-          <div></div>
-        </div>
-      </div>
+      <app-item-card *ngFor="let item of itemsInCart;"
+                     [itemInfo]="item.info"
+                     [isShoppingCart]="true">
+      </app-item-card>
     </div>
 
     <div class="filters">
