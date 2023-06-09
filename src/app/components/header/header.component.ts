@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   currentRoute: string = '/';
   isLogged: boolean = false;
+
   get user(): IUserSchema {
     return userInfo;
   }
@@ -41,7 +42,11 @@ export class HeaderComponent implements OnInit {
       .then(async response => {
         const result = await response.json();
         if (result.result === true) {
-          window.location.reload();
+          this.router.navigateByUrl('/')
+            .then(() => {
+              // под анимку убирания менюшки
+              setTimeout(() => window.location.reload(), 200);
+            });
         }
       });
   }
