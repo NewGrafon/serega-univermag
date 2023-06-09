@@ -9,7 +9,9 @@
     </div>
     <div class="interacts">
       <ng-container *ngIf="existInCart">
-        <button (click)="removeItemFromCart()" class="delete-button"><img src="./assets/img/delete-icon.png" alt="Кнопка удаления товара из корзины"/></button>
+        <button (click)="removeItemFromCart()" class="delete-button"><img src="./assets/img/delete-icon.png"
+                                                                          alt="Кнопка удаления товара из корзины"/>
+        </button>
         <button (click)="decrementItemCount()"><p>-</p></button>
         <p>{{ countInCart }}</p>
         <button (click)="incrementItemCount()"><p>+</p></button>
@@ -32,7 +34,9 @@
     </div>
     <div class="interacts">
       <ng-container *ngIf="existInCart">
-        <button (click)="removeItemFromCart()" class="delete-button"><img src="./assets/img/delete-icon.png" alt="Кнопка удаления товара из корзины"/></button>
+        <button (click)="removeItemFromCart()" class="delete-button"><img src="./assets/img/delete-icon.png"
+                                                                          alt="Кнопка удаления товара из корзины"/>
+        </button>
         <button (click)="decrementItemCount()"><p>-</p></button>
         <p>{{ countInCart }}</p>
         <button (click)="incrementItemCount()"><p>+</p></button>

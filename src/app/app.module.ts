@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FilterByHomeCategories, HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent, ThisItemInCart } from './pages/shopping-cart/shopping-cart.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -22,6 +22,7 @@ import {NgOptimizedImage} from "@angular/common";
     HeaderComponent,
     FooterComponent,
     ShoppingCartComponent,
+    ThisItemInCart,
     RegistrationComponent,
     LoginComponent,
     ProfileComponent,

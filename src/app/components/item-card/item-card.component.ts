@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
 import {IItemInfo} from "../../fake-items-database";
 import {ChangeInCartType, ShoppingCartComponent} from "../../pages/shopping-cart/shopping-cart.component";
 
@@ -16,6 +16,10 @@ export class ItemCardComponent implements OnInit {
 
   ngOnInit() {
     this.updateItemInfo();
+    ShoppingCartComponent.subscribeToChangeCart({
+      who: this,
+      cb: () => { this.updateItemInfo(); }
+    })
   }
 
   updateItemInfo(): void {

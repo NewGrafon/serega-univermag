@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {GetFakeDB, IItemInfo} from "../../fake-items-database";
+import {HomeComponent} from "../home/home.component";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -13,9 +15,22 @@ export class ShoppingCartComponent implements OnInit {
   itemsInCart: ICartItem[] = [];
   static currentInstance: ShoppingCartComponent;
 
+  private static changeCartSubscribers: IChangeCartSubscriber[] = [];
+  public static subscribeToChangeCart(sub: IChangeCartSubscriber) {
+    ShoppingCartComponent.changeCartSubscribers.push(sub);
+  }
+  private static changeCartEvent(): void {
+    ShoppingCartComponent.changeCartSubscribers
+      .filter(sub => sub.who !== null && sub.who !== undefined)
+      .forEach(sub => {
+        sub.cb();
+      })
+  }
+
   constructor() {
     ShoppingCartComponent.currentInstance = this;
   }
+
   ngOnInit() {
     ShoppingCartComponent.RecalculateCart(undefined);
     this.itemsInCart = ShoppingCartComponent.itemsInCart;
@@ -23,7 +38,7 @@ export class ShoppingCartComponent implements OnInit {
 
   static RecalculateCart(changeObj: ChangeInCart | undefined): void {
 
-    const fakeDB = GetFakeDB();
+    const itemsDB = GetFakeDB();
 
     let lsStr = localStorage.getItem('cart') || '[]';
     let lsJson: ILocalStorageItem[] = JSON.parse(lsStr);
@@ -84,7 +99,7 @@ export class ShoppingCartComponent implements OnInit {
     ShoppingCartComponent.itemsInCart = [];
 
     for (let item of lsJson) {
-      fakeDB.forEach(fdbItem => {
+      itemsDB.forEach(fdbItem => {
         if (item.id === fdbItem.id) {
           const obj: ICartItem = {
             info: fdbItem,
@@ -99,6 +114,8 @@ export class ShoppingCartComponent implements OnInit {
     if (ShoppingCartComponent.currentInstance) {
       ShoppingCartComponent.currentInstance.itemsInCart = ShoppingCartComponent.itemsInCart;
     }
+
+    ShoppingCartComponent.changeCartEvent();
   }
 
   getCartPrice(): number {
@@ -108,6 +125,36 @@ export class ShoppingCartComponent implements OnInit {
     })
     return result;
   }
+}
+
+@Pipe({
+  name: 'ThisItemInCart'
+})
+export class ThisItemInCart implements PipeTransform {
+  transform(item: IItemInfo): IThisItemInCartResponse {
+    const result = ShoppingCartComponent.itemsInCart.filter(cItem => cItem.info.id === item.id);
+    if (result.length > 0) {
+      return {
+        result: true,
+        count: result[0].count
+      }
+    } else {
+      return {
+        result: false,
+        count: null
+      }
+    }
+  }
+}
+
+export interface IThisItemInCartResponse {
+  result: boolean,
+  count: number | null
+}
+
+export interface IChangeCartSubscriber {
+  who: any,
+  cb: Function
 }
 
 export enum ChangeInCartType {
