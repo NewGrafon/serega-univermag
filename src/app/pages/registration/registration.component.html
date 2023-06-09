@@ -35,7 +35,7 @@
 
             </div>
             <div class="idk">
-                <p>Уже есть аккаунт? <span routerLink="/login">Войдите</span>.</p>
+                <p>Уже есть аккаунт? <span routerLink="/login" (click)="HeaderComponent.Instance.closeMenu()">Войдите</span>.</p>
                 <button type="button" (click)="TryRegistration()">Зарегистрироваться</button>
             </div>
         </div>

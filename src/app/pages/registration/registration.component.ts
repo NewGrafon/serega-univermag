@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {PopupSystemComponent} from "../../components/popup-system/popup-system.component";
 import {Router} from "@angular/router";
+import {HeaderComponent} from "../../components/header/header.component";
 
 @Component({
   selector: 'app-registration',
@@ -70,6 +71,8 @@ export class RegistrationComponent {
 
     return { result: true, message: null };
   }
+
+    protected readonly HeaderComponent = HeaderComponent;
 }
 
 interface IRegisterResult {

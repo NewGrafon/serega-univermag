@@ -39,10 +39,11 @@
   <div class="close" id="close_menu" (click)="closeMenu()">X</div>
   <div class="menu_pages">
     <p routerLink="/" (click)="closeMenu()">Главная</p>
-    <p routerLink="/profile" (click)="closeMenu()">Профиль</p>
-     <p routerLink="/login" (click)="closeMenu()">Авторизация</p>
+    <p *ngIf="isLogged && user.accountType >= 1" routerLink="/admin-panel" (click)="closeMenu()">Админ-панель</p>
+    <p *ngIf="isLogged" routerLink="/profile" (click)="closeMenu()">Профиль</p>
+    <p *ngIf="!isLogged" routerLink="/login" (click)="closeMenu()">Авторизация</p>
     <p routerLink="/catalog" (click)="closeMenu()">Каталог</p>
     <p routerLink="/shopping-cart" (click)="closeMenu()">Корзина</p>
-<!--    <p>Выйти</p>-->
+    <p *ngIf="isLogged" (click)="closeMenu(); logout()">Выйти</p>
   </div>
 </div>

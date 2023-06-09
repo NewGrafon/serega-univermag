@@ -15,6 +15,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import {FormsModule} from "@angular/forms";
 import {NgOptimizedImage} from "@angular/common";
 import { PopupSystemComponent } from './components/popup-system/popup-system.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PopupSystemComponent } from './components/popup-system/popup-system.com
     CatalogComponent,
     FilterByHomeCategories,
     PopupSystemComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,

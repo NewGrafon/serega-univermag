@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router, Event, NavigationStart, NavigationEnd, NavigationError} from '@angular/router';
 import {AppComponent} from "../../app.component";
-import { OnInit } from "@angular/core";
+import {OnInit} from "@angular/core";
+import {isLogged, IUserSchema, userInfo} from "../../global-variables";
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,15 @@ import { OnInit } from "@angular/core";
 export class HeaderComponent implements OnInit {
 
   currentRoute: string = '/';
+  isLogged: boolean = false;
+  get user(): IUserSchema {
+    return userInfo;
+  }
 
   menuBlock: any
   closeMenuBlock: any
+
+  static Instance: HeaderComponent;
 
   openMenu() {
     this.menuBlock = document.getElementById("menu_block")
@@ -27,19 +34,31 @@ export class HeaderComponent implements OnInit {
     this.menuBlock?.classList.add("menu_block")
   }
 
+  async logout() {
+    fetch('/api/logout?_method=DELETE', {
+      method: 'POST'
+    })
+      .then(async response => {
+        const result = await response.json();
+        if (result.result === true) {
+          window.location.reload();
+        }
+      });
+  }
+
   ngOnInit() {
     this.currentRoute = location.pathname;
   }
 
   constructor(private router: Router) {
+    HeaderComponent.Instance = this;
     router.events.subscribe((event: Event) => {
-
       if (event instanceof NavigationEnd) {
         AppComponent.WaitForUpdateUser((url: string) => {
+          this.isLogged = isLogged;
           this.currentRoute = url;
         });
       }
-
     });
   }
 }

@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="idk">
-                <p>Ещё нет аккаунта? <span routerLink="/registration">Зарегистрируйтесь</span>.</p>
+                <p>Ещё нет аккаунта? <span routerLink="/registration" (click)="HeaderComponent.Instance.closeMenu()">Зарегистрируйтесь</span>.</p>
                 <button (click)="TryLogin()">Войти</button>
             </div>
         </div>
