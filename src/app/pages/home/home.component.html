@@ -3,39 +3,21 @@
 
   <div class="main_content">
     <div class="week">
-      <p class="title">Акции недели</p>
+      <p class="title">Новые товары!</p>
       <div class="items_slider">
-        <div class="item">
-          <div class="discount">
-            <p>-40%</p>
-          </div>
-          <img src="./assets/img/doshirak.png">
-          <div>
-            <p class="name">Лапша ДОШИРАК куриная по-домашнему, 10г</p>
-            <p class="discount_time">С 17 мая до 23 апреля</p>
-          </div>
-          <button>
-            <p>Добавить в корзину</p>
-          </button>
-        </div>
+        <ng-container *ngFor="let item of itemsDB.reverse(); index as i;">
+            <app-item-card *ngIf="i <= 5" [itemInfo]="item">
+            </app-item-card>
+        </ng-container>
       </div>
     </div>
     <div class="week">
       <p class="title">Всё для дома</p>
       <div class="items_slider">
-        <div class="item">
-          <div class="discount">
-            <p>-40%</p>
-          </div>
-          <img src="./assets/img/doshirak.png">
-          <div>
-            <p class="name">Лапша ДОШИРАК куриная по-домашнему, 10г</p>
-            <p class="discount_time">С 17 мая до 23 апреля</p>
-          </div>
-          <button>
-            <p>Добавить в корзину</p>
-          </button>
-        </div>
+        <ng-container *ngFor="let item of (itemsDB.reverse() | FilterByHomeCategories); index as i;">
+          <app-item-card *ngIf="i <= 5" [itemInfo]="item">
+          </app-item-card>
+        </ng-container>
       </div>
     </div>
     <div class="contacts">

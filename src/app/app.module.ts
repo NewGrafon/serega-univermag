@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
+import { FilterByHomeCategories, HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
@@ -26,7 +26,8 @@ import {NgOptimizedImage} from "@angular/common";
     LoginComponent,
     ProfileComponent,
     ItemCardComponent,
-    CatalogComponent
+    CatalogComponent,
+    FilterByHomeCategories
   ],
   imports: [
     BrowserModule,

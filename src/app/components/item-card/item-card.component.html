@@ -1,4 +1,5 @@
 <div *ngIf="!isShoppingCart; then defaultItem else cartItem"></div>
+
 <ng-template #defaultItem>
   <div class="item">
     <img [src]="itemInfo?.imageName ? './assets/img/'+itemInfo?.imageName : './assets/img/no-photo.png'">
