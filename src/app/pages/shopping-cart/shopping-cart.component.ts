@@ -2,6 +2,7 @@ import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {GetFakeDB, IItemInfo} from "../../fake-items-database";
 import {HomeComponent} from "../home/home.component";
 import {Observable} from "rxjs";
+import {AppComponent} from "../../app.component";
 
 
 @Component({
@@ -20,11 +21,17 @@ export class ShoppingCartComponent implements OnInit {
     ShoppingCartComponent.changeCartSubscribers.push(sub);
   }
   private static changeCartEvent(): void {
+
     ShoppingCartComponent.changeCartSubscribers
-      .filter(sub => sub.who !== null && sub.who !== undefined)
+      = ShoppingCartComponent.changeCartSubscribers
+        .filter(item => item.createdOnRouteCount === AppComponent.RouteChangeCount);
+
+    console.log(AppComponent.RouteChangeCount, ShoppingCartComponent.changeCartSubscribers)
+
+    ShoppingCartComponent.changeCartSubscribers
       .forEach(sub => {
         sub.cb();
-      })
+      });
   }
 
   constructor() {
@@ -154,7 +161,8 @@ export interface IThisItemInCartResponse {
 
 export interface IChangeCartSubscriber {
   who: any,
-  cb: Function
+  cb: Function,
+  createdOnRouteCount: number
 }
 
 export enum ChangeInCartType {

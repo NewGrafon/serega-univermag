@@ -1,7 +1,7 @@
 export enum Categories {
   Всё = '0',
   Продукты_питания = '1',
-  Остальное = '2'
+  Остальное = '999'
 }
 
 export interface IItemInfo {

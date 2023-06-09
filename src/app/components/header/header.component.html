@@ -2,7 +2,7 @@
 </header>
 <ng-template #indexHeader>
   <div class="index_header">
-    <div class="conteiner">
+    <div class="container">
       <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
       <input class="search" placeholder="Поиск товара">
       <div class="menu" id="menu" (click)="openMenu()">
@@ -18,7 +18,7 @@
 
 <ng-template #otherHeader>
   <div class="sub_header">
-    <div class="conteiner">
+    <div class="container">
       <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
       <input class="search" placeholder="Поиск товара">
       <div class="menu" id="menu" (click)="openMenu()">
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  
+
 </ng-template>
 
 
@@ -40,9 +40,9 @@
   <div class="menu_pages">
     <p routerLink="/" (click)="closeMenu()">Главная</p>
     <p routerLink="/profile" (click)="closeMenu()">Профиль</p>
-    <!-- <p routerLink="/login" (click)="closeMenu()">Авторизация</p> тута проверка на логин не логин пон? -->
+     <p routerLink="/login" (click)="closeMenu()">Авторизация</p>
     <p routerLink="/catalog" (click)="closeMenu()">Каталог</p>
     <p routerLink="/shopping-cart" (click)="closeMenu()">Корзина</p>
-    <p>Выйти</p>
+<!--    <p>Выйти</p>-->
   </div>
 </div>

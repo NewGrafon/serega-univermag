@@ -1,30 +1,23 @@
-<div class="conteiner">
+<div class="container">
     <p class="title">Вход</p>
-    <form>
+    <form name="login-form">
         <div class="main_block">
             <div class="inputs">
                 <div>
                     <p>Почта</p>
-                    <input>
+                    <input name="email">
                     <p></p>
                 </div>
                 <div>
                     <p>Пароль</p>
-                    <input>
+                    <input name="password">
                     <p></p>
                 </div>
-                <div>
-                    <p>Подтвердите пароль</p>
-                    <input>
-                    <p></p>
-                </div>
-
             </div>
             <div class="idk">
                 <p>Ещё нет аккаунта? <span routerLink="/registration">Зарегистрируйтесь</span>.</p>
-                <button>Войти</button>
+                <button (click)="TryLogin()">Войти</button>
             </div>
         </div>
-
     </form>
 </div>

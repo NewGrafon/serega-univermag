@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
 import {IItemInfo} from "../../fake-items-database";
 import {ChangeInCartType, ShoppingCartComponent} from "../../pages/shopping-cart/shopping-cart.component";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-item-card',
@@ -18,8 +19,9 @@ export class ItemCardComponent implements OnInit {
     this.updateItemInfo();
     ShoppingCartComponent.subscribeToChangeCart({
       who: this,
-      cb: () => { this.updateItemInfo(); }
-    })
+      cb: () => { this.updateItemInfo(); },
+      createdOnRouteCount: AppComponent.RouteChangeCount
+    });
   }
 
   updateItemInfo(): void {

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {PopupSystemComponent} from "../../components/popup-system/popup-system.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -6,5 +8,59 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  async TryLogin(): Promise<void> {
+    const form = document.forms.namedItem('login-form') || new HTMLFormElement();
 
+    const validResult = this.validation(form);
+
+    if (validResult.message !== null) {
+      PopupSystemComponent.SendMessage(validResult.message);
+    }
+
+    if (!validResult.result) {
+      return;
+    }
+
+    const body: any = {
+      email: form['email'].value,
+      password: form['password'].value
+    }
+
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body)
+    });
+
+    const result = await response.json();
+    if (result.result === true) {
+      await this.router.navigateByUrl("/");
+      return;
+    } else {
+      if (result.error) {
+        PopupSystemComponent.SendMessage(result.error);
+      }
+      return;
+    }
+  }
+
+  constructor(private router: Router) {}
+
+  private validation(form: HTMLFormElement): ILoginResult {
+    if (form['email'].value === "")
+      return { result: false, message: 'Поле с email не заполнено!' };
+
+    if (form['password'].value === "")
+      return { result: false, message: 'Поле с паролем не заполнено!' };
+
+    return { result: true, message: null };
+  }
+}
+
+interface ILoginResult {
+  result: boolean,
+  message: string | null
 }

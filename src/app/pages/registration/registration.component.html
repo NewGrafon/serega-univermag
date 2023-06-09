@@ -1,42 +1,42 @@
-<div class="conteiner">
+<div class="container">
     <p class="title">Регистрация</p>
-    <form>
+    <form name="registration-form">
         <div class="main_block">
             <div class="inputs">
                 <div>
                     <p>Имя</p>
-                    <input>
+                    <input name="firstname">
                 </div>
                 <div>
                     <p>Фамилия</p>
-                    <input>
+                    <input name="lastname">
                     <p></p>
                 </div>
                 <div>
                     <p>Телефон</p>
-                    <input>
+                    <input placeholder="Необязательно" name="phone">
                     <p></p>
                 </div>
                 <div>
                     <p>Почта</p>
-                    <input>
+                    <input type="email" name="email">
                     <p></p>
                 </div>
                 <div>
                     <p>Пароль</p>
-                    <input>
+                    <input type="password" name="password">
                     <p></p>
                 </div>
                 <div>
                     <p>Подтвердите пароль</p>
-                    <input>
+                    <input type="password" name="repeat-password">
                     <p></p>
                 </div>
 
             </div>
             <div class="idk">
                 <p>Уже есть аккаунт? <span routerLink="/login">Войдите</span>.</p>
-                <button>Зарегистрироваться</button>
+                <button type="button" (click)="TryRegistration()">Зарегистрироваться</button>
             </div>
         </div>
 

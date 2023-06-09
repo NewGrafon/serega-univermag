@@ -10,6 +10,11 @@ import {ShoppingCartComponent} from "./pages/shopping-cart/shopping-cart.compone
 export class AppComponent {
   title = 'serega-univermag';
 
+  private static routeChangeCount: number = 0;
+  static get RouteChangeCount(): number {
+    return AppComponent.routeChangeCount;
+  }
+
   private static cbAfterUpdateUser: any[] = [];
   public static WaitForUpdateUser(cb?: (url: string) => void) {
     AppComponent.cbAfterUpdateUser.push(cb);
@@ -32,6 +37,8 @@ export class AppComponent {
         AppComponent.cbAfterUpdateUser = [];
 
         AppComponent.navigationEventFinished = true;
+
+        AppComponent.routeChangeCount++;
       }
 
     });
