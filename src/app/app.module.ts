@@ -14,6 +14,7 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import {FormsModule} from "@angular/forms";
 import {NgOptimizedImage} from "@angular/common";
+import { PopupSystemComponent } from './components/popup-system/popup-system.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {NgOptimizedImage} from "@angular/common";
     ProfileComponent,
     ItemCardComponent,
     CatalogComponent,
-    FilterByHomeCategories
+    FilterByHomeCategories,
+    PopupSystemComponent,
   ],
   imports: [
     BrowserModule,
