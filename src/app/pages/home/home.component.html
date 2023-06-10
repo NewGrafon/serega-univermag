@@ -1,12 +1,21 @@
 <main>
-  <div class="main_slider"></div>
+  <div class="main_slider">
+    <div class="container">
+      <div class="wrapper">
+        <img src="./assets/img/Cofe.png">
+        <img src="./assets/img/korm2.png">
+        <img src="./assets/img/yuogurt.png">
+        <img src="./assets/img/korm.png">
+      </div>
+    </div>
+  </div>
   <div class="main_content">
     <div class="week">
       <p class="title">Новые товары!</p>
       <div class="items_slider">
         <ng-container *ngFor="let item of itemsDB.reverse(); index as i;">
-            <app-item-card *ngIf="i <= 5" [itemInfo]="item">
-            </app-item-card>
+          <app-item-card *ngIf="i <= 5" [itemInfo]="item">
+          </app-item-card>
         </ng-container>
       </div>
     </div>
@@ -29,4 +38,3 @@
     </div>
   </div>
 </main>
-
