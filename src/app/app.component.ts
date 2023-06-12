@@ -18,7 +18,7 @@ export class AppComponent {
   }
 
   AuthUrls = (): string[] => ['/profile'].concat(this.AdminAuthUrls);
-  AdminAuthUrls: string[] = ['/admin-panel'];
+  AdminAuthUrls: string[] = ['/admin-panel', '/create-item'];
 
   private static cbAfterUpdateUser: any[] = [];
   public static WaitForUpdateUser(cb?: (url: string) => void) {
