@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
 import {NgOptimizedImage} from "@angular/common";
 import { PopupSystemComponent } from './components/popup-system/popup-system.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { CreateItemComponent } from './pages/create-item/create-item.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
     FilterByHomeCategories,
     PopupSystemComponent,
     AdminPanelComponent,
+    CreateItemComponent,
   ],
   imports: [
     BrowserModule,
