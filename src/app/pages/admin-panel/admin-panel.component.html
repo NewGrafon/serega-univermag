@@ -1,17 +1,22 @@
 <div class="main_block">
-    <div class="list">
-        <div class="add" routerLink="/create-item">
-            <p>Добавить</p>
-        </div>
-        <div class="colon_name">
-            <p style="width: 55%;">Название</p>
-            <p style="width: 15%; text-align: end;">Вес</p>
-            <p style="width: 15%; text-align: end;">Цена</p>
-        </div>
-        <div class="item">
-            <p class="Book_name">Доширак</p>
-            <p class="author"> 10г </p>
-            <p class="adding_date">40 р</p>
-        </div>
+  <div class="list">
+
+    <div class="add" routerLink="/create-item">
+      <p>Добавить</p>
     </div>
+
+    <div class="colon_name">
+      <p style="width: 55%;">Название</p>
+      <p style="width: 15%; text-align: end;">Вес</p>
+      <p style="width: 15%; text-align: end;">Цена</p>
+    </div>
+    <ng-container *ngFor="let item of itemsDB">
+      <div class="item">
+        <p class="Book_name">{{ item.name }}</p>
+        <p class="author"> {{ item.weight }} г.</p>
+        <p class="adding_date">{{ item.price }} ₽</p>
+      </div>
+    </ng-container>
+
+  </div>
 </div>

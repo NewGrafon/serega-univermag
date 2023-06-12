@@ -35,16 +35,15 @@ export class LoginComponent {
       },
       body: JSON.stringify(body)
     });
-
+    console.log(response)
     const result = await response.json();
+    console.log(result)
     if (result.result === true) {
       await this.router.navigateByUrl("/");
       return;
     } else {
-      if (result.error) {
-        PopupSystemComponent.SendMessage(result.error);
-      }
-      return;
+        PopupSystemComponent.SendMessage('Не получилось войти в аккаунт!');
+        return;
     }
   }
 

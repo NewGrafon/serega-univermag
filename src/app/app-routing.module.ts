@@ -6,7 +6,8 @@ import { RegistrationComponent } from "./pages/registration/registration.compone
 import { LoginComponent } from "./pages/login/login.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { CatalogComponent } from "./pages/catalog/catalog.component";
-import {AdminPanelComponent} from "./pages/admin-panel/admin-panel.component";
+import { AdminPanelComponent } from "./pages/admin-panel/admin-panel.component";
+import { CreateItemComponent } from "./pages/create-item/create-item.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'admin-panel', component: AdminPanelComponent }
+  { path: 'admin-panel', component: AdminPanelComponent },
+  { path: 'create-item', component: CreateItemComponent },
 ];
 
 @NgModule({
