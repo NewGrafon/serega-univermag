@@ -8,6 +8,7 @@ import { ProfileComponent } from "./pages/profile/profile.component";
 import { CatalogComponent } from "./pages/catalog/catalog.component";
 import { AdminPanelComponent } from "./pages/admin-panel/admin-panel.component";
 import { CreateItemComponent } from "./pages/create-item/create-item.component";
+import { ItemPageComponent } from "./pages/item-page/item-page.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'admin-panel', component: AdminPanelComponent },
   { path: 'create-item', component: CreateItemComponent },
+  { path: 'item-page', component: ItemPageComponent },
+
 ];
 
 @NgModule({

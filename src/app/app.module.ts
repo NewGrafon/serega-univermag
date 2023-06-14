@@ -17,6 +17,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { PopupSystemComponent } from './components/popup-system/popup-system.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { CreateItemComponent } from './pages/create-item/create-item.component';
+import { ItemPageComponent } from './pages/item-page/item-page.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CreateItemComponent } from './pages/create-item/create-item.component';
     PopupSystemComponent,
     AdminPanelComponent,
     CreateItemComponent,
+    ItemPageComponent,
   ],
   imports: [
     BrowserModule,
