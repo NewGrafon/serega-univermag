@@ -11,7 +11,7 @@
       <p style="width: 15%; text-align: end;">Цена</p>
     </div>
     <ng-container *ngFor="let item of itemsDB">
-      <div class="item">
+      <div class="item" [routerLink]="['item-page', item.id]">
         <p class="Book_name">{{ item.name }}</p>
         <p class="author"> {{ item.weight }} г.</p>
         <p class="adding_date">{{ item.price }} ₽</p>

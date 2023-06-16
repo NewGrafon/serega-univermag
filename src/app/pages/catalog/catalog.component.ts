@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Categories, GetFakeDB, IItemInfo} from "../../fake-items-database";
+import {Categories, IItemInfo} from "../../items-config";
 import {ICartItem, ShoppingCartComponent} from "../shopping-cart/shopping-cart.component";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-catalog',
@@ -13,7 +14,7 @@ export class CatalogComponent implements OnInit {
   @Input() minPrice: number | null = null;
   @Input() maxPrice: number | null = null;
 
-  itemsDB: IItemInfo[] = GetFakeDB();
+  itemsDB: IItemInfo[] = [];
 
   itemsIDsInCart: string[] = [];
 
@@ -41,8 +42,8 @@ export class CatalogComponent implements OnInit {
 
     return min <= itemPrice && itemPrice <= max;
   }
-  ngOnInit() {
-
+  async ngOnInit() {
+    this.itemsDB = await AppComponent.getRealItemsFromDB();
   }
 
   protected readonly Categories = Categories;

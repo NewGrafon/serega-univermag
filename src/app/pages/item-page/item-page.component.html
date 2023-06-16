@@ -1,8 +1,8 @@
-<main class="book_main">
+<main class="book_main" *ngIf="item !== null">
     <div class="book_info">
         <div class="image_rating">
             <div class="book_img">
-                <img src="/images/UpldaOIVq6Y.png">
+                <img src="{{ item.image?.buffer ?? '/images/no-photo.png' }}">
             </div>
             <p>
                 Возростное ограничение: 8+

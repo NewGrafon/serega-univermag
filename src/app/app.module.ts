@@ -12,12 +12,13 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
-import {FormsModule} from "@angular/forms";
-import {NgOptimizedImage} from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { NgOptimizedImage } from "@angular/common";
 import { PopupSystemComponent } from './components/popup-system/popup-system.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { CreateItemComponent } from './pages/create-item/create-item.component';
 import { ItemPageComponent } from './pages/item-page/item-page.component';
+import { ReplaceUnderlinesToSpaces } from "./items-config";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ItemPageComponent } from './pages/item-page/item-page.component';
     AdminPanelComponent,
     CreateItemComponent,
     ItemPageComponent,
+    ReplaceUnderlinesToSpaces
   ],
   imports: [
     BrowserModule,

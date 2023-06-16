@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Event, NavigationEnd, NavigationError, NavigationStart, Router} from "@angular/router";
+import {Component} from '@angular/core';
+import {Event, NavigationEnd, Router} from "@angular/router";
 import {ShoppingCartComponent} from "./pages/shopping-cart/shopping-cart.component";
 import {isLogged, UpdateUser, userInfo} from "./global-variables";
 import {PopupSystemComponent} from "./components/popup-system/popup-system.component";
+import {Categories, IItemInfo} from "./items-config";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,22 @@ import {PopupSystemComponent} from "./components/popup-system/popup-system.compo
 })
 export class AppComponent {
   title = 'serega-univermag';
+
+  static async getRealItemsFromDB(): Promise<IItemInfo[]> {
+    const response = await fetch('/api/get-items');
+    return (await response.json() as any[]).map((item: any) => {
+      item.id = item._id;
+      // @ts-ignore
+      for (let key in Categories) {
+        // @ts-ignore
+        if (Categories[key] === item.category.toString()) {
+          item.category = Categories[key as keyof typeof Categories]
+        }
+      }
+      item.created = new Date(item.created);
+      return item;
+    });
+  }
 
   private static routeChangeCount: number = 0;
   static get RouteChangeCount(): number {

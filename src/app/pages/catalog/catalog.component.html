@@ -17,11 +17,12 @@
                     </option>
                 </select>
             </div>
-            <button class="acepts">Применить</button>
+            <button class="accepts">Применить</button>
         </div>
         <div class="catalog">
           <ng-container *ngFor="let item of itemsDB;">
-            <ng-container *ngIf="item.category === selectedCategory || selectedCategory === Categories['Всё']">
+            <ng-container *ngIf="item.category == selectedCategory || selectedCategory === Categories['Всё']">
+
               <ng-container *ngIf="updateIDsInCart()">
 
                 <ng-container *ngIf="priceInBound(item.price)">

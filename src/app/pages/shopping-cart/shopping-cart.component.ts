@@ -1,5 +1,5 @@
 import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
-import {GetFakeDB, IItemInfo} from "../../fake-items-database";
+import {Categories, IItemInfo} from "../../items-config";
 import {HomeComponent} from "../home/home.component";
 import {Observable} from "rxjs";
 import {AppComponent} from "../../app.component";
@@ -26,11 +26,9 @@ export class ShoppingCartComponent implements OnInit {
       = ShoppingCartComponent.changeCartSubscribers
         .filter(item => item.createdOnRouteCount === AppComponent.RouteChangeCount);
 
-    console.log(AppComponent.RouteChangeCount, ShoppingCartComponent.changeCartSubscribers)
-
     ShoppingCartComponent.changeCartSubscribers
-      .forEach(sub => {
-        sub.cb();
+      .forEach(async sub => {
+        await sub.cb();
       });
   }
 
@@ -38,15 +36,16 @@ export class ShoppingCartComponent implements OnInit {
     ShoppingCartComponent.currentInstance = this;
   }
 
-  ngOnInit() {
-    ShoppingCartComponent.RecalculateCart(undefined);
+  async ngOnInit() {
+    await ShoppingCartComponent.RecalculateCart(undefined);
     this.itemsInCart = ShoppingCartComponent.itemsInCart;
   }
 
-  static RecalculateCart(changeObj: ChangeInCart | undefined): void {
+  static async RecalculateCart(changeObj: ChangeInCart | undefined): Promise<void> {
 
-    const itemsDB = GetFakeDB();
+    let itemsDB: IItemInfo[] = await AppComponent.getRealItemsFromDB();
 
+    console.log(itemsDB)
     let lsStr = localStorage.getItem('cart') || '[]';
     let lsJson: ILocalStorageItem[] = JSON.parse(lsStr);
 
