@@ -24,7 +24,7 @@
 .item {
     position: relative;
     width: 98%;
-    height: 40px;
+    height: 48px;
     border: 1px solid orange;
     background-color: white;
     border-radius: 10px;
@@ -53,10 +53,20 @@
 }
 
 .author,
-.adding_date {
-
+.adding_date, {
     width: 15%;
     text-align: end;
+}
+
+.delete {
+  width: 28px;
+  margin-left: 12px;
+  height: 28px;
+  background-image: url("../../../assets/img/delete-icon.png");
+  background-size: 28px;
+  background-repeat: no-repeat;
+  text-align: center;
+  z-index: 100;
 }
 
 .add {

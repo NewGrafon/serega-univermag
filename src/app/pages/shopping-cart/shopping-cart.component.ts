@@ -45,7 +45,6 @@ export class ShoppingCartComponent implements OnInit {
 
     let itemsDB: IItemInfo[] = await AppComponent.getRealItemsFromDB();
 
-    console.log(itemsDB)
     let lsStr = localStorage.getItem('cart') || '[]';
     let lsJson: ILocalStorageItem[] = JSON.parse(lsStr);
 
