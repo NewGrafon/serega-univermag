@@ -23,37 +23,31 @@ export class CreateItemComponent {
 
     let reader = new FileReader();
     reader.readAsDataURL(body.image);
-    reader.onload = function () {
+    reader.onload = async function () {
       body.image = {
         mimetype: (body.image as File).type,
         buffer: reader.result
+      }
+
+      const response = await fetch('/api/create-item', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body)
+      });
+      const result = await response.json();
+      console.log(result)
+      if (result.result === true) {
+        window.location.href = '/admin-panel';
+      } else {
+        PopupSystemComponent.SendMessage('Произошла неизвестная ошибка, попробуйте еще раз!');
       }
     };
     reader.onerror = function (error) {
       console.log('Error: ', error);
     };
-
-    const interval: any = setInterval(async () => {
-      if (body.image.mimetype !== undefined) {
-        const response = await fetch('/api/create-item', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(body)
-        });
-        const result = await response.json();
-        console.log(result)
-        if (result.result === true) {
-          await this.router.navigateByUrl("/admin-panel");
-          return clearInterval(interval);
-        } else {
-          PopupSystemComponent.SendMessage('Произошла неизвестная ошибка, попробуйте еще раз!');
-          return clearInterval(interval);
-        }
-      }
-    }, 100);
   }
 
   addImage(event: Event, container: HTMLLabelElement): void {
