@@ -10,11 +10,15 @@
     <div class="interacts">
       <ng-container *ngIf="existInCart">
         <button (click)="removeItemFromCart()" class="delete-button"><img src="./assets/img/delete-icon.png"
-                                                                          alt="Кнопка удаления товара из корзины"/>
+            alt="Кнопка удаления товара из корзины" />
         </button>
-        <button (click)="decrementItemCount()"><p>-</p></button>
+        <button (click)="decrementItemCount()">
+          <p>-</p>
+        </button>
         <p>{{ countInCart }}</p>
-        <button (click)="incrementItemCount()"><p>+</p></button>
+        <button (click)="incrementItemCount()">
+          <p>+</p>
+        </button>
       </ng-container>
       <ng-container *ngIf="!existInCart">
         <button (click)="addToCart()">
@@ -34,9 +38,9 @@
           <div class="book_img">
             <img src="{{ itemInfo.image?.buffer ?? '/images/no-photo.png' }}">
           </div>
-          <!--            <p>-->
-          <!--                Возростное ограничение: 8+-->
-          <!--            </p>-->
+          <p>
+            Вес: {{ itemInfo.weight }} г.
+          </p>
         </div>
         <div class="book_author_info">
           <div class="book_name">
@@ -50,11 +54,15 @@
           <div class="interacts">
             <ng-container *ngIf="existInCart">
               <button (click)="removeItemFromCart()" class="delete-button"><img src="./assets/img/delete-icon.png"
-                                                                                alt="Кнопка удаления товара из корзины"/>
+                  alt="Кнопка удаления товара из корзины" />
               </button>
-              <button (click)="decrementItemCount()"><p>-</p></button>
+              <button (click)="decrementItemCount()">
+                <p>-</p>
+              </button>
               <p>{{ countInCart }}</p>
-              <button (click)="incrementItemCount()"><p>+</p></button>
+              <button (click)="incrementItemCount()">
+                <p>+</p>
+              </button>
 
               <p>&nbsp;&nbsp; Цена: {{ countInCart * itemInfo.price }} ₽</p>
             </ng-container>
