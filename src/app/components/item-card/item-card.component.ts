@@ -1,7 +1,9 @@
-import {Component, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
-import {IItemInfo} from "../../fake-items-database";
+import {Component, Input, OnInit} from '@angular/core';
+import {IItemInfo} from "../../items-config";
 import {ChangeInCartType, ShoppingCartComponent} from "../../pages/shopping-cart/shopping-cart.component";
 import {AppComponent} from "../../app.component";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-item-card',
@@ -13,13 +15,15 @@ export class ItemCardComponent implements OnInit {
   @Input() itemInfo: IItemInfo | null = null;
   @Input() existInCart: boolean = false;
   countInCart: number = 0;
-  @Input() isShoppingCart: boolean = false;
+  @Input() isItemPage: boolean = false;
 
-  ngOnInit() {
+  async ngOnInit() {
     this.updateItemInfo();
     ShoppingCartComponent.subscribeToChangeCart({
       who: this,
-      cb: () => { this.updateItemInfo(); },
+      cb: async () => {
+        this.updateItemInfo();
+      },
       createdOnRouteCount: AppComponent.RouteChangeCount
     });
   }
@@ -36,10 +40,11 @@ export class ItemCardComponent implements OnInit {
     })
   }
 
-  addToCart(): void {
+  async addToCart(): Promise<void> {
+    console.log(this.itemInfo)
     const id = this.itemInfo?.id;
     if (!this.existInCart && id) {
-      ShoppingCartComponent.RecalculateCart({
+      await ShoppingCartComponent.RecalculateCart({
         type: ChangeInCartType.Add,
         id: id,
         value: undefined
@@ -49,10 +54,10 @@ export class ItemCardComponent implements OnInit {
     }
   }
 
-  incrementItemCount(): void {
+  async incrementItemCount(): Promise<void> {
     const id = this.itemInfo?.id;
     if (id !== undefined) {
-      ShoppingCartComponent.RecalculateCart({
+      await ShoppingCartComponent.RecalculateCart({
         type: ChangeInCartType.Increment,
         id: id,
         value: 1
@@ -62,10 +67,10 @@ export class ItemCardComponent implements OnInit {
     }
   }
 
-  decrementItemCount(): void {
+  async decrementItemCount(): Promise<void> {
     const id = this.itemInfo?.id;
     if (id) {
-      ShoppingCartComponent.RecalculateCart({
+      await ShoppingCartComponent.RecalculateCart({
         type: ChangeInCartType.Decrement,
         id: id,
         value: 1
@@ -75,10 +80,10 @@ export class ItemCardComponent implements OnInit {
     }
   }
 
-  removeItemFromCart(): void {
+  async removeItemFromCart(): Promise<void> {
     const id = this.itemInfo?.id;
     if (this.existInCart && id) {
-      ShoppingCartComponent.RecalculateCart({
+      await ShoppingCartComponent.RecalculateCart({
         type: ChangeInCartType.Remove,
         id: id,
         value: undefined
@@ -87,6 +92,21 @@ export class ItemCardComponent implements OnInit {
       this.updateItemInfo();
     }
   }
+
+  private routeSubscription: Subscription = new Subscription();
+  constructor(private actRouter: ActivatedRoute, private router: Router) {
+    if (router.url.includes('/item-page/')) {
+      this.routeSubscription = actRouter.params.subscribe(async params => {
+        const id = params['id'];
+        const response = await fetch('/api/get-item/' + id);
+        const result = await response.json();
+        result.id = result._id;
+        this.itemInfo = result;
+        this.updateItemInfo();
+      });
+    }
+  }
+
 }
 
 

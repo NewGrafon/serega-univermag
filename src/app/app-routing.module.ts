@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'admin-panel', component: AdminPanelComponent },
   { path: 'create-item', component: CreateItemComponent },
-  { path: 'item-page', component: ItemPageComponent },
+  { path: 'item-page/:id', component: ItemPageComponent },
 
 ];
 

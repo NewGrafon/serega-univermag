@@ -1,18 +1,20 @@
-
+<form name="create-item-form" action="/api/create-item" method="POST" enctype="multipart/form-data">
 <div class="main_block">
     <div class="popUp_add " id="popup">
-        <div class="add_img">
-            <p>Добавить изображение</p>
-        </div>
-        <input placeholder="Название">
-        <select aria-placeholder="Категория">
-            <option>Продукты</option>
-            <option>Другое</option>
-
+        <label #imgContainer class="add_img">
+          <p>{{ imgContainer.style.backgroundImage !== '' ? 'Изменить изображение' : 'Добавить изображение' }}</p>
+          <input name="image" class="hidden" type="file" (change)="addImage($event, imgContainer)">
+        </label>
+        <input placeholder="Название" name="name">
+        <select name="category">
+          <ng-container *ngFor="let category of Categories | keyvalue">
+            <option *ngIf="category.value !== '0'" value="{{ category.value }}">{{ category.key | ReplaceUnderlinesToSpaces }}</option>
+          </ng-container>
         </select>
-        <input placeholder="Вес">
-        <input placeholder="Цена">
-        <textarea class="discriptionAdd" placeholder="Описание"></textarea>
-        <button class="add">Добавить</button>
+        <input placeholder="Вес" name="weight">
+        <input placeholder="Цена" name="price">
+        <textarea class="descriptionAdd" placeholder="Описание" name="description"></textarea>
+        <button class="add" (click)="tryCreate()">Добавить</button>
     </div>
 </div>
+</form>

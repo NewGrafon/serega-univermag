@@ -1,24 +1,24 @@
 .main_block {
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .add {
-    margin-top: 12px;
-    margin-bottom: 8px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #d1d1d1;
-    color: white;
-    transition: 0.12s;
-    border: none;
-    cursor: pointer;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #d1d1d1;
+  color: white;
+  transition: 0.12s;
+  border: none;
+  cursor: pointer;
 }
 
 .add:hover {
-    background-color: orange;
+  background-color: orange;
 }
 
 
@@ -26,57 +26,56 @@
 
 
 .popUp_add {
-    position: absolute;
-    margin-top: 60px;
-    width: 60%;
-    left: 20%;
-    height: auto;
-    background-color: #ffffff;
-    border-radius: 20px;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2000;
-    opacity: 1;
-    pointer-events: all;
-    display: flex;
+  position: absolute;
+  margin-top: 60px;
+  width: 60%;
+  left: 20%;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2000;
+  opacity: 1;
+  pointer-events: all;
+  display: flex;
 }
 
 .popUp_add input {
-    width: 50%;
-    height: 30px;
-    margin-top: 10px;
-    outline: none;
+  width: 50%;
+  height: 30px;
+  margin-top: 10px;
+  outline: none;
 }
 
-.discriptionAdd {
-    margin-top: 10px;
-    width: 50%;
-    height: 300px;
-    text-align: start;
-    resize: none;
+.descriptionAdd {
+  margin-top: 10px;
+  width: 50%;
+  height: 300px;
+  text-align: start;
+  resize: none;
 }
-
 
 
 .add_img {
-    cursor: pointer;
-    width: 200px;
-    height: 200px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    border: 1px solid #b8b8b8;
-    margin-top: 8px;
-    background-image: url("/assets/img/add.png");
-
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: 1px solid #b8b8b8;
+  margin-top: 8px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 select {
-    margin-top: 10px;
-    width: 50%;
-    height: 30px;
-    outline: none;
+  margin-top: 10px;
+  width: 50%;
+  height: 30px;
+  outline: none;
 }
- 
+

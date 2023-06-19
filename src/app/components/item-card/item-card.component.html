@@ -1,10 +1,10 @@
-<div *ngIf="!isShoppingCart; then defaultItem else cartItem"></div>
+<div *ngIf="!isItemPage; then defaultItem else bigItem"></div>
 
 <ng-template #defaultItem>
   <div class="item">
-    <img [src]="itemInfo?.imageName ? './assets/img/'+itemInfo?.imageName : './assets/img/no-photo.png'">
+    <img [src]="itemInfo?.image?.buffer ?? './assets/img/no-photo.png'" routerLink="/item-page/{{ itemInfo?.id }}">
     <div>
-      <p class="name">{{ itemInfo?.name }}</p>
+      <p class="name" routerLink="/item-page/{{ itemInfo?.id }}">{{ itemInfo?.name }}</p>
       <p class="discount_time">Цена: {{ itemInfo?.price }} ₽</p>
     </div>
     <div class="interacts">
@@ -25,22 +25,52 @@
   </div>
 </ng-template>
 
-<ng-template #cartItem>
-  <div class="item">
-    <img [src]="itemInfo?.imageName ? './assets/img/'+itemInfo?.imageName : './assets/img/no-photo.png'">
-    <div>
-      <p class="name">{{ itemInfo?.name }}</p>
-      <p class="discount_time">Цена: {{ itemInfo?.price }} ₽</p>
+
+<ng-template #bigItem>
+  <ng-container *ngIf="itemInfo !== null">
+    <div class="book_main">
+      <div class="book_info">
+        <div class="image_rating">
+          <div class="book_img">
+            <img src="{{ itemInfo.image?.buffer ?? '/images/no-photo.png' }}">
+          </div>
+          <!--            <p>-->
+          <!--                Возростное ограничение: 8+-->
+          <!--            </p>-->
+        </div>
+        <div class="book_author_info">
+          <div class="book_name">
+            <p> {{ itemInfo.name }} </p>
+          </div>
+          <!--            <div class="author_name">-->
+          <!--                <p>Компания: <span style="font-size: 16px;">Доширак</span></p>-->
+          <!--                &lt;!&ndash; <p>Дата выхода: <span style="font-size: 16px;">11.11.2003</span></p>-->
+          <!--                <p>Дата появления на ElecLib: <span style="font-size: 16px;">11.11.2010</span></p> &ndash;&gt;-->
+          <!--            </div>-->
+          <div class="interacts">
+            <ng-container *ngIf="existInCart">
+              <button (click)="removeItemFromCart()" class="delete-button"><img src="./assets/img/delete-icon.png"
+                                                                                alt="Кнопка удаления товара из корзины"/>
+              </button>
+              <button (click)="decrementItemCount()"><p>-</p></button>
+              <p>{{ countInCart }}</p>
+              <button (click)="incrementItemCount()"><p>+</p></button>
+
+              <p>&nbsp;&nbsp; Цена: {{ countInCart * itemInfo.price }} ₽</p>
+            </ng-container>
+            <ng-container *ngIf="!existInCart">
+              <button (click)="addToCart()">
+                <p [style]="{fontSize: '16px'}">Добавить в корзину</p>
+              </button>
+            </ng-container>
+          </div>
+          <div class="about_book">
+            <p style="font-weight: bold; margin-bottom: 10px; font-size: 20px;"> О товаре</p>
+            <p>{{ itemInfo.description }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="interacts">
-      <ng-container *ngIf="existInCart">
-        <button (click)="removeItemFromCart()" class="delete-button"><img src="./assets/img/delete-icon.png"
-                                                                          alt="Кнопка удаления товара из корзины"/>
-        </button>
-        <button (click)="decrementItemCount()"><p>-</p></button>
-        <p>{{ countInCart }}</p>
-        <button (click)="incrementItemCount()"><p>+</p></button>
-      </ng-container>
-    </div>
-  </div>
+  </ng-container>
+
 </ng-template>
