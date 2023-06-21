@@ -12,9 +12,19 @@
             <div>
                 <p>Тип продукции</p>
                 <select [(ngModel)]="selectedCategory">
-                    <option *ngFor="let enum of Categories | keyvalue" value="{{ enum.value }}">
-                      {{ enum.key.toString().replaceAll('_', ' ') }}
-                    </option>
+                  <ng-container *ngFor="let enum of Categories | keyvalue; first as isFirst">
+                    <ng-container *ngIf="isFirst">
+                      <option value="0">
+                        Всё
+                      </option>
+                    </ng-container>
+                    <ng-container *ngIf="enum.value !== '0'">
+                      <option value="{{ enum.value }}">
+                        {{ enum.key.toString().replaceAll('_', ' ') }}
+                      </option>
+                    </ng-container>
+                  </ng-container>
+
                 </select>
             </div>
             <button class="accepts">Применить</button>

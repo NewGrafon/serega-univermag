@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   itemsDB: IItemInfo[] = [];
 
-  static AllForHomeCategories: Categories[] = [Categories.Остальное];
+  static AllForHomeCategories: Categories[] = [Categories.Товары_для_дома];
 
   constructor() {
 
