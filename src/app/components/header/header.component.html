@@ -3,8 +3,12 @@
 <ng-template #indexHeader>
   <div class="index_header">
     <div class="container">
-      <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
-      <input class="search" placeholder="Поиск товара">
+      <div>
+        <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
+      </div>
+      <div class="search">
+        <input placeholder="Поиск товара">
+      </div>
       <div class="menu" id="menu" (click)="openMenu()">
         <div class="prikol">
           <div></div>
@@ -12,8 +16,16 @@
           <div></div>
         </div>
       </div>
+      <div class="search_block">
+        <p>Мороженое</p>
+        <p>Пироженое</p>
+        <p>Арбуз</p>
+        <p>Дыня</p>
+      </div>
     </div>
+
   </div>
+
 </ng-template>
 
 <ng-template #otherHeader>
@@ -32,7 +44,6 @@
   </div>
 
 </ng-template>
-
 
 <div class="menu_block" id="menu_block">
   <p class="menu_name">Меню</p>

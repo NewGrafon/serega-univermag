@@ -211,18 +211,46 @@
 // search
 
 .search {
-  padding: 0 10px 0 10px;
-  border-radius: 12px;
   width: 28%;
   height: 36px;
-  background-color: initial;
-  outline: 2px solid rgba($color: #ffffff, $alpha: 0.1);
-  border: none;
 
-  color: white;
-  font-size: 18px;
+  input {
+    width: 100%;
+    height: 36px;
+    background-color: initial;
+    outline: 2px solid rgba($color: #ffffff, $alpha: 0.1);
+    border: none;
+    padding: 0 10px 0 10px;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+  }
 }
 
-.search:focus {
+.search input:focus {
   outline: 2px solid orange;
+}
+
+
+.search_block {
+  position: absolute;
+  background-color: #fff;
+  width: 500px;
+  min-height: 140px;
+  max-height: 500px;
+  z-index: 200;
+  top: 70px;
+  left: calc(50% - 250px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  
+  p{
+    font-size: 18px;
+    margin-top: 4px;
+    margin-left: 8px;
+    line-height: 18px;
+    
+  }
 }
