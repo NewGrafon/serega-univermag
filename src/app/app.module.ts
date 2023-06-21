@@ -18,28 +18,29 @@ import { PopupSystemComponent } from './components/popup-system/popup-system.com
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { CreateItemComponent } from './pages/create-item/create-item.component';
 import { ItemPageComponent } from './pages/item-page/item-page.component';
-import { ReplaceUnderlinesToSpaces } from "./items-config";
+import {GetKeyAndReplaceUnderlinesToSpaces, ReplaceUnderlinesToSpaces} from "./items-config";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent,
-    ShoppingCartComponent,
-    ThisItemInCart,
-    RegistrationComponent,
-    LoginComponent,
-    ProfileComponent,
-    ItemCardComponent,
-    CatalogComponent,
-    FilterByHomeCategories,
-    PopupSystemComponent,
-    AdminPanelComponent,
-    CreateItemComponent,
-    ItemPageComponent,
-    ReplaceUnderlinesToSpaces
-  ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        HeaderComponent,
+        FooterComponent,
+        ShoppingCartComponent,
+        ThisItemInCart,
+        RegistrationComponent,
+        LoginComponent,
+        ProfileComponent,
+        ItemCardComponent,
+        CatalogComponent,
+        FilterByHomeCategories,
+        PopupSystemComponent,
+        AdminPanelComponent,
+        CreateItemComponent,
+        ItemPageComponent,
+        ReplaceUnderlinesToSpaces,
+        GetKeyAndReplaceUnderlinesToSpaces,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

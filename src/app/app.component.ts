@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Event, NavigationEnd, Router} from "@angular/router";
 import {ShoppingCartComponent} from "./pages/shopping-cart/shopping-cart.component";
 import {isLogged, UpdateUser, userInfo} from "./global-variables";
@@ -10,8 +10,10 @@ import {Categories, IItemInfo} from "./items-config";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'serega-univermag';
+
+  static allItemsFromDBWithoutImages: IItemInfo[] = [];
 
   static async getRealItemsFromDB(): Promise<IItemInfo[]> {
     const response = await fetch('/api/get-items');
@@ -30,6 +32,7 @@ export class AppComponent {
   }
 
   private static routeChangeCount: number = 0;
+
   static get RouteChangeCount(): number {
     return AppComponent.routeChangeCount;
   }
@@ -38,14 +41,14 @@ export class AppComponent {
   AdminAuthUrls: string[] = ['/admin-panel', '/create-item'];
 
   private static cbAfterUpdateUser: any[] = [];
+
   public static WaitForUpdateUser(cb?: (url: string) => void) {
     AppComponent.cbAfterUpdateUser.push(cb);
   }
+
   public static navigationEventFinished: boolean = false;
 
   constructor(private router: Router) {
-
-    ShoppingCartComponent.RecalculateCart(undefined);
 
     router.events.subscribe(async (event: Event) => {
 
@@ -100,6 +103,15 @@ export class AppComponent {
 
     });
 
+  }
+
+  async ngOnInit(): Promise<void> {
+    await ShoppingCartComponent.RecalculateCart(undefined);
+    AppComponent.allItemsFromDBWithoutImages = (await AppComponent.getRealItemsFromDB())
+      .map(item => {
+        item.image = null;
+        return item;
+      });
   }
 }
 

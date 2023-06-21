@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {Router, Event, NavigationStart, NavigationEnd, NavigationError} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Event, NavigationEnd, Router} from '@angular/router';
 import {AppComponent} from "../../app.component";
-import {OnInit} from "@angular/core";
 import {isLogged, IUserSchema, userInfo} from "../../global-variables";
+import {Categories, GetKeyAndReplaceUnderlinesToSpaces, IItemInfo} from "../../items-config";
 
 @Component({
   selector: 'app-header',
@@ -22,6 +22,16 @@ export class HeaderComponent implements OnInit {
   closeMenuBlock: any
 
   static Instance: HeaderComponent;
+
+  searchList: IItemInfo[] = [];
+
+  searchInput(event: any): void {
+    const str: string = event.target.value;
+    this.searchList = AppComponent.allItemsFromDBWithoutImages
+      .filter(item => {
+        return str !== '' && item.name.search(str) !== -1;
+      });
+  }
 
   openMenu() {
     this.menuBlock = document.getElementById("menu_block")
@@ -62,8 +72,11 @@ export class HeaderComponent implements OnInit {
         AppComponent.WaitForUpdateUser((url: string) => {
           this.isLogged = isLogged;
           this.currentRoute = url;
+          this.searchList = [];
         });
       }
     });
   }
+
+  protected readonly GetKeyAndReplaceUnderlinesToSpaces = GetKeyAndReplaceUnderlinesToSpaces;
 }

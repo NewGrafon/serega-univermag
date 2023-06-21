@@ -4,10 +4,12 @@
   <div class="index_header">
     <div class="container">
       <div>
-        <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
+        <p routerLink="/" class="logo">Домино<br><span>Универмаг</span></p>
       </div>
       <div class="search">
-        <input placeholder="Поиск товара">
+        <input placeholder="Поиск товара" (input)="searchInput($event)"
+               alt="0" (focusin)="sInput.alt = '1'" (focusout)="sInput.alt = '0'; sInput.value = '';" #sInput
+        />
       </div>
       <div class="menu" id="menu" (click)="openMenu()">
         <div class="prikol">
@@ -16,11 +18,20 @@
           <div></div>
         </div>
       </div>
-      <div class="search_block">
-        <p>Мороженое</p>
-        <p>Пироженое</p>
-        <p>Арбуз</p>
-        <p>Дыня</p>
+      <div class="search_block" id="sb0"
+           [style]="{ display: sInput.alt === '1' || searchBlock.id === 'sb1' ? 'flex' : 'none' }"
+           #searchBlock (mousemove)="searchBlock.id = 'sb1'" (mouseout)="searchBlock.id = 'sb0'"
+      >
+        <ng-container *ngIf="searchList.length > 0 && (sInput.alt === '1' || searchBlock.id === 'sb1')">
+          <ng-container *ngFor="let item of searchList; first as isFirst">
+            <p routerLink="/item-page/{{item.id}}"
+              [style]="{ marginTop: isFirst ? '10px' : '0' }">
+              {{ item.category | GetKeyAndReplaceUnderlinesToSpaces }}:
+              <br>
+              {{ item.name }}
+            </p>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
 
@@ -31,14 +42,31 @@
 <ng-template #otherHeader>
   <div class="sub_header">
     <div class="container">
-      <p routerLink="/" class="logo">Серега<br><span>Универмаг</span></p>
-      <input class="search" placeholder="Поиск товара">
+      <p routerLink="/" class="logo">Домино<br><span>Универмаг</span></p>
+      <input class="search" placeholder="Поиск товара" (input)="searchInput($event)"
+             alt="0" (focusin)="sInput.alt = '1'" (focusout)="sInput.alt = '0'; sInput.value = '';" #sInput
+      />
       <div class="menu" id="menu" (click)="openMenu()">
         <div class="prikol">
           <div></div>
           <div></div>
           <div></div>
         </div>
+      </div>
+      <div class="search_block" id="sb0"
+           [style]="{ display: sInput.alt === '1' || searchBlock.id === 'sb1' ? 'flex' : 'none' }"
+           #searchBlock (mousemove)="searchBlock.id = 'sb1'" (mouseout)="searchBlock.id = 'sb0'"
+      >
+        <ng-container *ngIf="searchList.length > 0 && (sInput.alt === '1' || searchBlock.id === 'sb1')">
+          <ng-container *ngFor="let item of searchList; first as isFirst">
+            <p routerLink="/item-page/{{item.id}}"
+              [style]="{ marginTop: isFirst ? '8px' : '0' }">
+              Категория: {{ item.category | GetKeyAndReplaceUnderlinesToSpaces }}
+              <br>
+              {{ item.name }}
+            </p>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
   </div>

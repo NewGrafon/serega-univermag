@@ -20,6 +20,21 @@ export class ReplaceUnderlinesToSpaces implements PipeTransform {
   }
 }
 
+@Pipe({
+  name: 'GetKeyAndReplaceUnderlinesToSpaces'
+})
+export class GetKeyAndReplaceUnderlinesToSpaces implements PipeTransform {
+  transform(str: string): string {
+    for (let key in Categories) {
+      // @ts-ignore
+      if (Categories[key] === str) {
+        str = key;
+      }
+    }
+    return str.replaceAll('_', ' ');
+  }
+}
+
 export interface IItemInfo {
   id: string,
   category: Categories,
